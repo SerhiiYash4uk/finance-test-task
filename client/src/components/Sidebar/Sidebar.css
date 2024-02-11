@@ -1,0 +1,36 @@
+.sidebar {
+  padding: 50px 20px 0 20px;
+  background-color: #2f2f2f;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.sidebar-title {
+  font-size: 2em;
+  font-weight: 600;
+  min-width: max-content;
+}
+.ticker-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+}
+.tickerName {
+  display: flex;
+  align-items: center;
+  font-size: 1.6em;
+  font-weight: 600;
+  font-style: italic;
+}
+.add-button {
+  background-color: #4a4a4a;
+  cursor: pointer;
+  font-size: 2em;
+  border-radius: 50%;
+  padding: 3px 12px 0px 12px;
+  color: #fff;
+}
+.add-button:hover {
+  color: green;
+}

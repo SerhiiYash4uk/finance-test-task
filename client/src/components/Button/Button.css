@@ -1,0 +1,16 @@
+.button {
+  background-color: #4a4a4a;
+  cursor: pointer;
+  font-weight: 600;
+  border-radius: 8px;
+  padding: 8px 24px;
+  font-size: 1em;
+  font-family: inherit;
+  color: inherit;
+}
+.button:hover {
+  color: green;
+}
+.active {
+  color: green;
+}

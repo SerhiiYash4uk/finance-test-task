@@ -1,25 +1,29 @@
-import logo from './logo.svg';
+import React from 'react';
+import { useSelector } from 'react-redux';
+
+import { selectDeletedTickerList } from './redux/tickers';
+
+import { Header, Main, Footer, Sidebar } from './components';
+
 import './App.css';
 
-function App() {
+export const App = () => {
+  const deletedTickers = useSelector(selectDeletedTickerList);
+  const widthFR = deletedTickers.length !== 0 ? '1fr 4fr' : '0fr 4fr';
+
+  const myStyles = {
+    minHeight: '100%',
+    display: 'grid',
+    grid: "'header header' 'sidebar main' 'footer footer'",
+    gridTemplateColumns: widthFR,
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className='App' style={myStyles}>
+      <Header />
+      <Main />
+      {deletedTickers.length !== 0 && <Sidebar />}
+      <Footer />
     </div>
   );
-}
-
-export default App;
+};

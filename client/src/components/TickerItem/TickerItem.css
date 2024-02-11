@@ -1,0 +1,93 @@
+.ticker {
+  position: relative;
+  width: 350px;
+  height: 250px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  padding: 0 20px;
+  border-radius: 8px;
+  background-color: #2f2f2f;
+}
+.frozen {
+  opacity: 0.4;
+}
+.freeze {
+  position: absolute;
+  top: 0;
+  left: 0;
+  max-width: max-content;
+  cursor: pointer;
+  font-size: 0.8em;
+  font-weight: 600;
+  border-radius: 0.4rem;
+  padding: 4px 12px;
+}
+.freeze:hover {
+  background: #4a4a4a;
+  color: #f1f1f1;
+}
+.ticker-btn-delete {
+  position: absolute;
+  top: -4px;
+  right: 2px;
+  cursor: pointer;
+  color: inherit;
+  background-color: transparent;
+  font-size: 1.2em;
+}
+.ticker-btn-delete:hover {
+  color: #4a4a4a;
+}
+.ticker-header {
+  margin-top: 1.2rem;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.ticker-title {
+  font-size: 1.8em;
+  font-weight: bold;
+  letter-spacing: 0.1em;
+}
+.ticker-precent {
+  display: block;
+  color: green;
+  font-style: italic;
+}
+.precent-red {
+  color: #e50914;
+}
+.ticker-main {
+  min-width: 98%;
+  max-width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+.ticker-price {
+  font-size: 1.2rem;
+  font-weight: 600;
+  letter-spacing: 2px;
+}
+.ticker-change {
+  padding: 0 10px;
+  background: #00000000;
+  font-style: italic;
+  line-height: 1.6em;
+  border-radius: 8px;
+  border: 2px solid green;
+}
+.red {
+  border-color: #e50914;
+}
+.ticker-change_arrow {
+  font-size: 1.4em;
+  margin-left: 5px;
+  font-style: normal;
+  color: green;
+}
+.arrow-red {
+  color: #e50914;
+}

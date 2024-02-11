@@ -1,0 +1,17 @@
+.header {
+  display: flex;
+  min-height: 100px;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 30px;
+  border-bottom: 2px solid #2f2f2f;
+}
+.logo {
+  font-size: 2em;
+  font-weight: 800;
+  cursor: pointer;
+}
+.interval-button-container {
+  display: flex;
+  gap: 10px;
+}

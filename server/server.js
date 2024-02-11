@@ -14,6 +14,12 @@ const tickers = [
   'AMZN', // Amazon
   'FB', // Facebook
   'TSLA', // Tesla
+  'BA', // Boeing Co
+  'BABA', // Alibaba
+  'META', // Meta
+  'NFLX', // Netflix
+  'RIVN', // Rivian
+  'NVDA', // NVIDIA
 ];
 
 function randomValue(min = 0, max = 1, precision = 0) {
@@ -23,12 +29,18 @@ function randomValue(min = 0, max = 1, precision = 0) {
 
 function utcDate() {
   const now = new Date();
-  return new Date(now.getUTCFullYear(), now.getUTCMonth(), now.getUTCDate(), now.getUTCHours(), now.getUTCMinutes(), now.getUTCSeconds());
+  return new Date(
+    now.getUTCFullYear(),
+    now.getUTCMonth(),
+    now.getUTCDate(),
+    now.getUTCHours(),
+    now.getUTCMinutes(),
+    now.getUTCSeconds()
+  );
 }
 
 function getQuotes(socket) {
-
-  const quotes = tickers.map(ticker => ({
+  const quotes = tickers.map((ticker) => ({
     ticker,
     exchange: 'NASDAQ',
     price: randomValue(100, 300, 2),
@@ -42,16 +54,16 @@ function getQuotes(socket) {
   socket.emit('ticker', quotes);
 }
 
-function trackTickers(socket) {
+function trackTickers(socket, timeToUpdate) {
   // run the first time immediately
   getQuotes(socket);
 
   // every N seconds
-  const timer = setInterval(function() {
+  const timer = setInterval(function () {
     getQuotes(socket);
-  }, FETCH_INTERVAL);
+  }, timeToUpdate);
 
-  socket.on('disconnect', function() {
+  socket.on('disconnect', function () {
     clearInterval(timer);
   });
 }
@@ -62,17 +74,17 @@ const server = http.createServer(app);
 
 const socketServer = io(server, {
   cors: {
-    origin: "*",
-  }
+    origin: '*',
+  },
 });
 
-app.get('/', function(req, res) {
+app.get('/', function (_, res) {
   res.sendFile(__dirname + '/index.html');
 });
 
 socketServer.on('connection', (socket) => {
-  socket.on('start', () => {
-    trackTickers(socket);
+  socket.on('start', (timer = FETCH_INTERVAL) => {
+    trackTickers(socket, timer);
   });
 });
 
